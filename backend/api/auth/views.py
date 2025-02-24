@@ -1,8 +1,6 @@
-from django.shortcuts import render
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.authtoken.models import Token
 
 from .serializers import (
     RegisterSerializer,
@@ -24,6 +22,7 @@ class RegisterView(generics.CreateAPIView):
             status=status.HTTP_201_CREATED
         )
 
+
 class LoginView(APIView):
     serializer_class = LoginSerializer
     permission_classes = (permissions.AllowAny,)
@@ -41,6 +40,7 @@ class LoginView(APIView):
             data,
             status=status.HTTP_200_OK
         )
+
 
 class LogoutView(APIView):
     serializer_class = LogoutSerializer

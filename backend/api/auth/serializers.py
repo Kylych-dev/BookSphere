@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate
 from django.db.models import Q
 from rest_framework import serializers
-from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.db import transaction
 
