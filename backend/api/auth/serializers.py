@@ -1,9 +1,11 @@
 from django.contrib.auth import authenticate
+from django.db.models import Q
 from rest_framework import serializers
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+from rest_framework_simplejwt.tokens import RefreshToken
+from django.db import transaction
 
 from apps.users.models import User
-from rest_framework_simplejwt.tokens import RefreshToken, Token
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -12,22 +14,32 @@ class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['username', 'email', 'password']
-        extra_kwargs = {'password': {'write_only': True}}
+        extra_kwargs = {
+            'email': {'required': False},
+            'password': {'write_only': True}
+        }
 
     def validate(self, data):
-        email = data.get('email')
-        if User.objects.filter(email=email).exists():
+        if User.objects.filter(
+                Q(username__iexact=data['username']) |
+                Q(email__iexact=data['email'])
+        ).exists():
             raise serializers.ValidationError("A user with this email already exists")
         return data
 
+    @transaction.atomic
     def create(self, validated_data):
-        return User.objects.create_user(**validated_data)
+        return User.objects.create_user(
+            username=validated_data['username'],
+            email=validated_data['email'],
+            password=validated_data['password']
+        )
 
 
 class LoginSerializer(serializers.ModelSerializer):
     email = serializers.EmailField()
     password = serializers.CharField(style={'input_type': 'password'}, write_only=True)
-    tokens = serializers.SerializerMethodField()
+    # tokens = serializers.SerializerMethodField()
 
     def validate(self, data):
         email = data.get('email')
@@ -48,7 +60,7 @@ class LoginSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password']
+        fields = ['email', 'password']
         extra_kwargs = {'password': {'write_only': True}}
 
 

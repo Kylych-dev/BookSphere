@@ -15,15 +15,14 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
     permission_classes = (permissions.AllowAny,)
 
-    # def post(self, request):
-    #     serializer = self.serializer_class(data=request.data)
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save()
-    #     user_date: dict = serializer.data
-    #     return Response(
-    #         user_date,
-    #         status=status.HTTP_201_CREATED
-    #     )
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        return Response(
+            {"detail": "Registration successful"},
+            status=status.HTTP_201_CREATED
+        )
 
 class LoginView(APIView):
     serializer_class = LoginSerializer
