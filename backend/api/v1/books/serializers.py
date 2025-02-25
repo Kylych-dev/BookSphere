@@ -1,9 +1,12 @@
 from rest_framework import serializers
+from django.db import transaction
+
 from apps.library.models import (
     Book,
     Author,
     Genre,
-    FavoriteBook
+    FavoriteBook,
+    BookAuthor
 )
 
 
@@ -20,20 +23,18 @@ class GenreSerializer(serializers.ModelSerializer):
 
 
 class BookSerializer(serializers.ModelSerializer):
-    # authors = AuthorSerializer(many=True, read_only=True)
     authors = serializers.SerializerMethodField()
-    genres = GenreSerializer(many=True, read_only=True)
+    genres = GenreSerializer(many=True, read_only=True, source='genre.only')
 
     author_ids = serializers.PrimaryKeyRelatedField(
         many=True,
-        queryset=Author.objects.all(),
-        source='book_authors',
+        queryset=Author.objects.only('id'),
         write_only=True
     )
 
     genre_ids = serializers.PrimaryKeyRelatedField(
         many=True,
-        queryset=Genre.objects.all(),
+        queryset=Genre.objects.only('id'),
         source='genres',
         write_only=True
     )
@@ -57,19 +58,38 @@ class BookSerializer(serializers.ModelSerializer):
 
     def get_authors(self, obj):
         return [
-            {"id": ba.author.id, "name": f"{ba.author.first_name} {ba.author.last_name}"}
-            for ba in obj.book_authors.all()
+            {
+                'id': author.id,
+                'name': f'{author.first_name} {author.last_name}'}
+            for author in obj.authors.all()
+
         ]
+
+    def create(self, validated_data):
+        author_ids = validated_data.pop('author_ids', [])
+        genres = validated_data.pop('genres', [])
+        book = Book.objects.create(**validated_data)
+        book.genres.set(genres)
+
+        for author in author_ids:
+            BookAuthor.objects.create(book=book, author=author)
+        return book
+
+    def update(self, instance, validated_data):
+        author_ids = validated_data.pop('author_ids', None)
+        genres = validated_data.pop('genres', None)
+        instance = super().update(instance, validated_data)
+
+        if genres is not None:
+            instance.genres.set(genres)
+
+        if author_ids is not None:
+            instance.authors.set(author_ids)
+
+        return instance
 
 
 class FavoriteBookSerializer(serializers.ModelSerializer):
-    book_title = serializers.CharField(source='book.title', read_only=True)
-
     class Meta:
         model = FavoriteBook
-        fields = ['id', 'book_title', 'created_at']
-        read_only_fields = ['user', 'created_at']
-
-    # def create(self, validated_data):
-    #     validated_data['user'] = self.context['request'].user
-    #     return super().create(validated_data)
+        fields = ['user', 'book', 'created_at', 'updated_at']

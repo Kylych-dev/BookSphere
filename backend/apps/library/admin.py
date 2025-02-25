@@ -61,7 +61,7 @@ class BookAdmin(admin.ModelAdmin):
             'fields': ('summary', 'genres')
         }),
         ('Publication', {
-            'fields': ('publication_date', 'language')
+            'fields': ('publication_date',)
         })
     )
 

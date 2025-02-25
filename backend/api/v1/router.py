@@ -9,11 +9,6 @@ from api.v1.authors import views as authors_views
 
 router = DefaultRouter(trailing_slash=False)
 
-# router.register(r'authors/', authors_views.AuthorViewSet, basename='authors')
-# router.register(r'books/', books_views.BookViewSet, basename='books')
-# router.register(r'favorites/', authors_views.FavoriteBookViewSet, basename='favorites')
-
-
 urlpatterns = router.urls
 
 urlpatterns.extend(
@@ -24,11 +19,30 @@ urlpatterns.extend(
         path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
 
-        path('authors/', authors_views.AuthorViewSet.as_view({'get': 'list', 'post': 'create'}), name='author-list'),
-        path('authors/<int:pk>/', authors_views.AuthorViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='author-detail'),
+        path('authors/', authors_views.AuthorViewSet.as_view(
+            {
+                'get': 'list',
+                'post': 'create'
+            }
+        ), name='author-list'),
+        path('authors/<int:pk>/', authors_views.AuthorViewSet.as_view(
+            {
+                'get': 'retrieve',
+                'put': 'update',
+                'patch': 'partial_update',
+                'delete': 'destroy'
+            }
+        ), name='author-detail'),
 
         path('books/', books_views.BookViewSet.as_view({'get': 'list', 'post': 'create'}), name='book-list'),
-        path('books/<int:pk>/', books_views.BookViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='book-detail'),
+        path('books/<int:pk>/', books_views.BookViewSet.as_view(
+            {
+                'get': 'retrieve',
+                'put': 'update',
+                'patch': 'partial_update',
+                'delete': 'destroy'
+            }
+        ), name='book-detail'),
 
         path('favorites/', authors_views.FavoriteBookViewSet.as_view({'get': 'list', 'post': 'create'}), name='favorite-list'),
         path('favorites/<int:pk>/', authors_views.FavoriteBookViewSet.as_view({'get': 'retrieve', 'delete': 'destroy'}), name='favorite-detail'),
@@ -36,6 +50,12 @@ urlpatterns.extend(
         path('favorites/clear/', authors_views.FavoriteBookViewSet.as_view({'delete': 'clear'}), name='favorites-clear'),
 
 
+        path('genre/', books_views.GenreViewSet.as_view(
+            {
+                'get': 'list',
+                'post': 'create'
+            }
+        ), name='genre-list'),
 
     ]
 )
