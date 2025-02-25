@@ -64,13 +64,11 @@ urlpatterns.extend(
 
 
 '''
-Copy
-
-[GET] /authors - список авторов     +
-[POST] /authors - создание автора       +
-[GET] /authors/{id} - детали автора     +
-[PUT] /authors/{id} - обновление автора     +
-[DELETE] /authors/{id} - удаление автора    +
+[GET] /authors - список авторов     
+[POST] /authors - создание автора   
+[GET] /authors/{id} - детали автора 
+[PUT] /authors/{id} - обновление автора 
+[DELETE] /authors/{id} - удаление автора
 
 [GET] /books - список книг с фильтрацией
 [POST] /books - создание книги
