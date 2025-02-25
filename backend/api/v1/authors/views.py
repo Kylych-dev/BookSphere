@@ -1,10 +1,10 @@
+from typing import Any
 from typing import Type
-
 from django.http import Http404
 from rest_framework import viewsets, permissions, status
-from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.request import Request
 
 from apps.library.models import Author, FavoriteBook
 from api.v1.books.serializers import AuthorSerializer, FavoriteBookSerializer
@@ -16,6 +16,12 @@ class AuthorViewSet(viewsets.ModelViewSet):
     permission_classes: list[Type[IsAuthenticated]] = [permissions.IsAuthenticated,]
 
     def destroy(self, request, *args, **kwargs):
+        """
+        Удаляет автора из базы данных.
+
+        :param request: Request
+        :return: Response
+        """
         try:
             instance = self.get_object()
             self.perform_destroy(instance)
@@ -35,10 +41,12 @@ class FavoriteBookViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return FavoriteBook.objects.filter(user=self.request.user)
 
-    # @action(detail=False, methods=['delete'], url_path='clear')
-    def clear(self, request):
+    def clear(self, request: Request) -> Response:
         """
         Удалить все избранные книги для текущего пользователя.
+
+        :param request: Request
+        :return: Response
         """
         self.get_queryset().delete()
         return Response(
@@ -46,21 +54,20 @@ class FavoriteBookViewSet(viewsets.ModelViewSet):
             status=status.HTTP_204_NO_CONTENT
         )
 
-    def destroy(self, request, *args, **kwargs):
+    def destroy(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         """
         Удалить конкретную книгу из избранных для текущего пользователя.
+
+        :param request: Request
+        :return: Response
         """
-        # Получаем объект по pk (id книги)
         favorite_book = self.get_object()
 
-        # Проверка, что книга принадлежит текущему пользователю
         if favorite_book.user != request.user:
             return Response(
                 {"detail": "You can only remove books from your own favorites."},
                 status=status.HTTP_403_FORBIDDEN
             )
-
-        # Удаление книги
         favorite_book.delete()
         return Response(
             {"detail": "The book has been removed from your favorites."},
