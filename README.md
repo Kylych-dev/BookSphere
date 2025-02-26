@@ -95,8 +95,9 @@ EMAIL_HOST_PASSWORD=qwerty
 
 Примечание: Для генерации случайного значения SECRET_KEY, можно использовать команду:
 
+``` bash
 python -c 'import secrets; print(secrets.token_urlsafe())'
-
+```
 3.2 Миграции базы данных
 
 Для настройки базы данных выполните миграции:
@@ -122,7 +123,9 @@ docker-compose up --build
 
 Если образы уже собраны, можно просто запустить контейнеры:
 
+``` bash
 docker-compose up
+```
 
 5. Доступ к приложению
 
