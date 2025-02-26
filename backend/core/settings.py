@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django_filters',
     'corsheaders',
     'decouple',
+    'django_extensions',
 
     'apps.users.apps.UsersConfig',
     'apps.library.apps.LibraryConfig'
