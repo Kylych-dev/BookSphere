@@ -17,6 +17,6 @@ COPY backend ./backend
 #WORKDIR /app/backend/.
 
 #ENV DJANGO_SETTINGS_MODULE=backend.settings
-RUN DJANGO_SECRET_KEY=secret && python backend/manage.py collectstatic --noinput
+RUN python backend/manage.py collectstatic --noinput
 
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "backend.core.wsgi:application"]
