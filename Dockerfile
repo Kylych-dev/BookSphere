@@ -17,6 +17,6 @@ COPY backend ./backend
 WORKDIR /app/backend/.
 
 #ENV DJANGO_SETTINGS_MODULE=backend.settings
-RUN python backend/manage.py collectstatic --noinput
+RUN python manage.py collectstatic --noinput
 
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "backend.core.wsgi:application"]
