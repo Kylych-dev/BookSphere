@@ -73,7 +73,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://username:password@host:port/database_name')
+    'default': dj_database_url.config(default='DATABASE_URL')
 }
 
 # DATABASES = {
