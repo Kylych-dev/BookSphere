@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-ffvm=39=%f-7fum#i72dkq4i4qt=@-u*e2jae1szp-1a9#pnqx
 DEBUG = True
 
 ALLOWED_HOSTS = ['booksphere-production.up.railway.app','127.0.0.1','localhost','0.0.0.0']
-CSRF_TRUSTED_ORIGINS = ['booksphere-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://booksphere-production.up.railway.app']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
