@@ -6,6 +6,8 @@ from api.auth import views as auth_views
 from api.v1.books import views as books_views
 from api.v1.authors import views as authors_views
 
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+
 
 router = DefaultRouter(trailing_slash=False)
 
@@ -13,6 +15,10 @@ urlpatterns = router.urls
 
 urlpatterns.extend(
     [
+
+        path('schema/', SpectacularAPIView.as_view(), name='schema'),
+        path('docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+
         path('register/', auth_views.RegisterView.as_view(), name='register'),
         path('login/', auth_views.LoginView.as_view(), name='login'),
         path('logout/', auth_views.LogoutView.as_view(), name='logout'),

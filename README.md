@@ -1,3 +1,28 @@
+```angular2html
+[GET] /authors - список авторов     
+[POST] /authors - создание автора   
+[GET] /authors/{id} - детали автора 
+[PUT] /authors/{id} - обновление автора 
+[DELETE] /authors/{id} - удаление автора
+
+[GET] /books - список книг с фильтрацией
+[POST] /books - создание книги
+[GET] /books/{id} - детали книги
+[PUT] /books/{id} - обновление книги
+[DELETE] /books/{id} - удаление книги
+
+[GET] /favorites - список избранного
+[POST] /favorites - добавить в избранное
+[DELETE] /favorites/{id} - удалить из избранного
+[DELETE] /favorites/clear - очистить избранное
+
+[POST] /register - регистрация
+[POST] /login - авторизация
+[POST] /logout - выход
+[POST] /token/refresh - обновление JWT-токена
+```
+
+
 # Инструкция по запуску проекта
 
 Этот проект представляет собой API, реализованное с использованием Django и Django REST Framework, с использованием Docker для контейнеризации. В этом файле объясняется, как клонировать проект, настроить и запустить его локально или в Docker.

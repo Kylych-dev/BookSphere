@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'decouple',
     'django_extensions',
     'drf_yasg',
+    'drf_spectacular',
 
     'apps.users.apps.UsersConfig',
     'apps.library.apps.LibraryConfig'
@@ -117,7 +118,13 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend',
         'rest_framework.filters.SearchFilter',
         'rest_framework.filters.OrderingFilter',
-    )
+    ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'BookSphere API',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
 }
 
 SIMPLE_JWT = {
