@@ -18,14 +18,14 @@ services:
 
   db:
     image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
     env_file:
       - backend/.env
     environment:
-      POSTGRES_DB: book_sphere
-      POSTGRES_USER: mirbekov
-      POSTGRES_PASSWORD: 1
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - "5431:5432"
 
