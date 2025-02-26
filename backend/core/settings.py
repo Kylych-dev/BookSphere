@@ -9,11 +9,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'django-insecure-ffvm=39=%f-7fum#i72dkq4i4qt=@-u*e2jae1szp-1a9#pnqx'
 
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost').split(',')
+ALLOWED_HOSTS = ['127.0.0.1','localhost','0.0.0.0']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -72,11 +72,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
+        'NAME': 'book_sphere',
+        'USER': 'mirbekov',
+        'PASSWORD': 1,
+        'HOST': 'db',
+        'PORT': 5432
     }
 }
 
@@ -126,25 +126,24 @@ SIMPLE_JWT = {
 
 # ____________ email settings
 
-EMAIL_BACKEND = config('EMAIL_BACKEND')
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT')
-EMAIL_USE_TLS = config('EMAIL_USE_TLS')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'mirbekov.kylych@mail.ru'
+EMAIL_HOST_PASSWORD = 'dTzq4dLR5Fmqvsf82dtT'
 
 # ____________ redis settings
 
-REDIS_HOST = config('REDIS_HOST', 'localhost')
-REDIS_PORT = config('REDIS_PORT', '6379')
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
 
 # ____________ celery settings
 
-CELERY_BROKER_URL = config('CELERY_BROKER_URL', 'redis://localhost:6379/0')
-CELERY_BROKER_TRANSPORT_OPTIONS = config('CELERY_BROKER_TRANSPORT_OPTIONS')
-CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND', 'redis://localhost:6379/0')
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_BROKER_TRANSPORT_OPTIONS = {"visibility_timeout": 3600}
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
-CELERY_ACCEPT_CONTENT = config('CELERY_ACCEPT_CONTENT', 'application/json')
-CELERY_TASK_SERIALIZER = config('CELERY_TASK_SERIALIZER', 'json')
-CELERY_RESULT_SERIALIZER = config('CELERY_RESULT_SERIALIZER', 'json')
-
+CELERY_ACCEPT_CONTENT = 'application/json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
