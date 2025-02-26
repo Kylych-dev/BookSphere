@@ -49,7 +49,7 @@ class Genre(TimeStampedModel):
         return f'{self.name}'
 
 
-class Book(models.Model):
+class Book(TimeStampedModel):
     title = models.CharField(_('title'), max_length=255)
     summary = models.TextField(_('summary'), blank=True)
     isbn = models.CharField(

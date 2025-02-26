@@ -25,6 +25,7 @@ urlpatterns.extend(
                 'post': 'create'
             }
         ), name='author-list'),
+
         path('authors/<int:pk>/', authors_views.AuthorViewSet.as_view(
             {
                 'get': 'retrieve',
@@ -34,7 +35,13 @@ urlpatterns.extend(
             }
         ), name='author-detail'),
 
-        path('books/', books_views.BookViewSet.as_view({'get': 'list', 'post': 'create'}), name='book-list'),
+        path('books/', books_views.BookViewSet.as_view(
+            {
+                'get': 'list',
+                'post': 'create'
+            }
+        ), name='book-list'),
+
         path('books/<int:pk>/', books_views.BookViewSet.as_view(
             {
                 'get': 'retrieve',
@@ -44,11 +51,25 @@ urlpatterns.extend(
             }
         ), name='book-detail'),
 
-        path('favorites/', authors_views.FavoriteBookViewSet.as_view({'get': 'list', 'post': 'create'}), name='favorite-list'),
-        path('favorites/<int:pk>/', authors_views.FavoriteBookViewSet.as_view({'get': 'retrieve', 'delete': 'destroy'}), name='favorite-detail'),
+        path('favorites/', authors_views.FavoriteBookViewSet.as_view(
+            {
+                'get': 'list',
+                'post': 'create'
+            }
+        ), name='favorite-list'),
 
-        path('favorites/clear/', authors_views.FavoriteBookViewSet.as_view({'delete': 'clear'}), name='favorites-clear'),
+        path('favorites/<int:pk>/', authors_views.FavoriteBookViewSet.as_view(
+            {
+                'get': 'retrieve',
+                'delete': 'destroy'
+            }
+        ), name='favorite-detail'),
 
+        path('favorites/clear/', authors_views.FavoriteBookViewSet.as_view(
+            {
+                'delete': 'clear'
+            }
+        ), name='favorites-clear'),
 
         path('genre/', books_views.GenreViewSet.as_view(
             {
