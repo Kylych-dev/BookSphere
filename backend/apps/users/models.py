@@ -19,6 +19,11 @@ class CustomUserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    subscribe_to_notifications = models.BooleanField(
+        default=True,
+        verbose_name='Подписка на уведомления'
+    )
+
     username = models.CharField('username', max_length=30, unique=True)
     email = models.EmailField('email', unique=True)
     password = models.CharField(max_length=128)
