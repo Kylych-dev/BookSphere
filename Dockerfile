@@ -2,6 +2,7 @@ FROM python:3.10-slim
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV PYTHONPATH=/app
 
 WORKDIR /app
 
@@ -14,9 +15,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY backend ./backend
 
-WORKDIR /app/backend/.
+#WORKDIR /app/backend
 
-#ENV DJANGO_SETTINGS_MODULE=backend.settings
-RUN python manage.py collectstatic --noinput
+
+RUN python backend/manage.py collectstatic --noinput
 
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "backend.core.wsgi:application"]

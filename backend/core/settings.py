@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'decouple',
     'django_extensions',
+    'drf_yasg',
 
     'apps.users.apps.UsersConfig',
     'apps.library.apps.LibraryConfig'

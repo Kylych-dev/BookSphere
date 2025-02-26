@@ -1,0 +1,692 @@
+{
+	"info": {
+		"_postman_id": "a5b98acc-2a20-4e1a-9ae6-5b0c2a752f5f",
+		"name": "BookSphere",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19278337"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \n        \"user\",\n    \"email\":\n        \"user@mail.ru\",\n    \"password\":\n        \"mirbekov 1993\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/register/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\n        \"user@mail.ru\",\n    \"password\":\n        \"mirbekov 1993\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refresh",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\n        \"user@mail.ru\",\n    \"password\":\n        \"mirbekov 1993\",\n    \"refresh\":\n        \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0MDUzNTYwNiwiaWF0IjoxNzQwNDQ5MjA2LCJqdGkiOiJjMmYzZDRlZjU2N2Y0NjBmYTg2OTQ1MTI5ODQ1ZGI2YSIsInVzZXJfaWQiOjN9.ivc1MP-naDRZ8UKhBXSF-Hp_Bfsen791mJlFdeM7kC0\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/token/refresh/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authors_list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNTQ5MjI5LCJpYXQiOjE3NDA1Mzg0MjksImp0aSI6ImFkYjFiMDg5NjE5MzQzZGNhODI2MDYwNDM2NGM3OTk5IiwidXNlcl9pZCI6MX0.mr1GLaTEePUDyL12pphX_Q0jGM-T7Bf3Wmh-B0_cJRM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\n        \"user@mail.ru\",\n    \"password\":\n        \"mirbekov 1993\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/authors/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"authors",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authors_create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNTQ5MjI5LCJpYXQiOjE3NDA1Mzg0MjksImp0aSI6ImFkYjFiMDg5NjE5MzQzZGNhODI2MDYwNDM2NGM3OTk5IiwidXNlcl9pZCI6MX0.mr1GLaTEePUDyL12pphX_Q0jGM-T7Bf3Wmh-B0_cJRM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"michael\",\n    \"last_name\": \"grachinski\",\n    \"date_of_birth\": \"1956-10-10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/authors/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"authors",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "author_detail",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNTQ5MjI5LCJpYXQiOjE3NDA1Mzg0MjksImp0aSI6ImFkYjFiMDg5NjE5MzQzZGNhODI2MDYwNDM2NGM3OTk5IiwidXNlcl9pZCI6MX0.mr1GLaTEePUDyL12pphX_Q0jGM-T7Bf3Wmh-B0_cJRM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"tom\",\n    \"last_name\": \"qwer\",\n    \"date_of_birth\": \"1996-10-10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/authors/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"authors",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "author_update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNTQ5MjI5LCJpYXQiOjE3NDA1Mzg0MjksImp0aSI6ImFkYjFiMDg5NjE5MzQzZGNhODI2MDYwNDM2NGM3OTk5IiwidXNlcl9pZCI6MX0.mr1GLaTEePUDyL12pphX_Q0jGM-T7Bf3Wmh-B0_cJRM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"tom2\",\n    \"last_name\": \"qwer\",\n    \"date_of_birth\": \"1996-10-10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/authors/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"authors",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "author_delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNDI4MDY2LCJpYXQiOjE3NDA0MTcyNjYsImp0aSI6IjQyY2I1MDYyNDYyNjQzMGNiYmE0MmIwYWQ5MTUzZGE4IiwidXNlcl9pZCI6NH0.8tYoShGsf3Fp15zq7Z4lyY4PfhWqn_BFwRwFqJ3WNww",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"tom2\",\n    \"last_name\": \"qwer\",\n    \"date_of_birth\": \"1996-10-10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/authors/3/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"authors",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book_list_filter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNTQ5MjI5LCJpYXQiOjE3NDA1Mzg0MjksImp0aSI6ImFkYjFiMDg5NjE5MzQzZGNhODI2MDYwNDM2NGM3OTk5IiwidXNlcl9pZCI6MX0.mr1GLaTEePUDyL12pphX_Q0jGM-T7Bf3Wmh-B0_cJRM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"tom2\",\n    \"last_name\": \"qwer\",\n    \"date_of_birth\": \"1996-10-10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/books/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"books",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book_create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNTQ5MjI5LCJpYXQiOjE3NDA1Mzg0MjksImp0aSI6ImFkYjFiMDg5NjE5MzQzZGNhODI2MDYwNDM2NGM3OTk5IiwidXNlcl9pZCI6MX0.mr1GLaTEePUDyL12pphX_Q0jGM-T7Bf3Wmh-B0_cJRM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"war and peace\",\n    \"isbn\": \"1\",\n    \"author_ids\": [1,2],\n    \"genre_ids\": [1],\n    \"publication_date\": \"1866-01-01\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/books/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"books",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book_update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNTQ5MjI5LCJpYXQiOjE3NDA1Mzg0MjksImp0aSI6ImFkYjFiMDg5NjE5MzQzZGNhODI2MDYwNDM2NGM3OTk5IiwidXNlcl9pZCI6MX0.mr1GLaTEePUDyL12pphX_Q0jGM-T7Bf3Wmh-B0_cJRM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"War and Peace\",\n    \"isbn\": \"2\",\n    \"author_ids\": [1,2],\n    \"genre_ids\": [1],\n    \"publication_date\": \"1866-01-01\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/books/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"books",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book_delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNDg1MDU2LCJpYXQiOjE3NDA0NDkyMDYsImp0aSI6IjNmZTIzZmFjZWI4MjRkZDE4YWQ0ODgxOTM2YzFmMmJmIiwidXNlcl9pZCI6M30.aTqbQNyILj3kXwjI6-4pWYQs7C8eADXdnS6vFwPpUr0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"tom2\",\n    \"last_name\": \"qwer\",\n    \"date_of_birth\": \"1996-10-10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/books/55/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"books",
+						"55",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "genre_create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNTQ5MjI5LCJpYXQiOjE3NDA1Mzg0MjksImp0aSI6ImFkYjFiMDg5NjE5MzQzZGNhODI2MDYwNDM2NGM3OTk5IiwidXNlcl9pZCI6MX0.mr1GLaTEePUDyL12pphX_Q0jGM-T7Bf3Wmh-B0_cJRM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Comedy\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/genre/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"genre",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "favorite_list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNDk2NjU3LCJpYXQiOjE3NDA0ODU4NTcsImp0aSI6IjBjMjAxMDA5N2M0OTRmMDY5YjBiNDA1MTczYTRkNGY3IiwidXNlcl9pZCI6M30.SXDyT0YQmz0njEF7SstGF6otgLULqQzSIzZsrrWQblw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"tom2\",\n    \"last_name\": \"qwer\",\n    \"date_of_birth\": \"1996-10-10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/favorites/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"favorites",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "favorite_create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNDk2NjU3LCJpYXQiOjE3NDA0ODU4NTcsImp0aSI6IjBjMjAxMDA5N2M0OTRmMDY5YjBiNDA1MTczYTRkNGY3IiwidXNlcl9pZCI6M30.SXDyT0YQmz0njEF7SstGF6otgLULqQzSIzZsrrWQblw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"user\": 4,\n        \"book\": 69\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/favorites/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"favorites",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "favorite_clear",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNDk2NjU3LCJpYXQiOjE3NDA0ODU4NTcsImp0aSI6IjBjMjAxMDA5N2M0OTRmMDY5YjBiNDA1MTczYTRkNGY3IiwidXNlcl9pZCI6M30.SXDyT0YQmz0njEF7SstGF6otgLULqQzSIzZsrrWQblw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"tom2\",\n    \"last_name\": \"qwer\",\n    \"date_of_birth\": \"1996-10-10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/favorites/clear/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"favorites",
+						"clear",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "favorite_delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNDk2NjU3LCJpYXQiOjE3NDA0ODU4NTcsImp0aSI6IjBjMjAxMDA5N2M0OTRmMDY5YjBiNDA1MTczYTRkNGY3IiwidXNlcl9pZCI6M30.SXDyT0YQmz0njEF7SstGF6otgLULqQzSIzZsrrWQblw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"tom2\",\n    \"last_name\": \"qwer\",\n    \"date_of_birth\": \"1996-10-10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/favorites/5/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"favorites",
+						"5",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
