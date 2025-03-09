@@ -1,5 +1,6 @@
 services:
   web:
+    image: book_web
     build: .
     command: bash -c "python backend/manage.py migrate && gunicorn --bind 0.0.0.0:8000 backend.core.wsgi:application"
     volumes:
